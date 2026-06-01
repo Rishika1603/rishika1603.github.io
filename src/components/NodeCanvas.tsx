@@ -207,10 +207,10 @@ export default function NodeCanvas() {
         </motion.div>
 
         <PerspectiveWrapper maxRotate={5} scaleOnHover={1.005} className="w-full">
-          <div
-            className="relative bg-[#080808] border border-white/[0.06] rounded-2xl overflow-hidden"
-            style={{ height: 420 }}
-          >
+            <div
+              className="relative bg-[#080808] border border-white/[0.06] rounded-2xl overflow-hidden overflow-x-auto"
+              style={{ height: 420, minWidth: '650px' }}
+            >
             {/* Animated grid bg */}
             <motion.div
               className="absolute inset-0 opacity-30"
