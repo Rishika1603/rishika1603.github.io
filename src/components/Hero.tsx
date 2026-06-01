@@ -48,8 +48,8 @@ export default function Hero() {
       style={{ perspective: 1200 }}
     >
       {/* Ambient glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-accent/[0.03] rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-[#a78bfa]/[0.02] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-accent/[0.03] rounded-full blur-[150px] pointer-events-none hidden md:block" />
+      <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-[#a78bfa]/[0.02] rounded-full blur-[120px] pointer-events-none hidden md:block" />
 
       {/* Grid background */}
       <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
@@ -82,7 +82,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center mb-6"
         >
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-[0.95] tracking-tighter mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[0.95] tracking-tighter mb-6">
             Rishika
             <br />
             <span className="gradient-text">Vishwakarma</span>
@@ -105,7 +105,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-3 mb-10"
+          className="flex flex-col items-center gap-3 mb-10 sm:flex-row"
         >
           <a
             href="https://github.com"
