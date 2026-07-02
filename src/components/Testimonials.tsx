@@ -1,34 +1,38 @@
 import { motion } from 'framer-motion';
-import { Quote, Bot, MessageSquare, User } from 'lucide-react';
+import { Quote, TrendingUp, Shield, Clock, Database, MessageSquare } from 'lucide-react';
 
-const testimonials = [
+const impactMetrics = [
   {
-    quote:
-      "Rishika's backend architecture is remarkably clean. The way she structured the Compluse compliance engine with PostgreSQL triggers and validation layers shows deep systems thinking.",
-    name: 'Claude 3.5 Sonnet',
-    role: 'AI Development Partner',
-    icon: <Bot size={16} />,
+    icon: <TrendingUp size={16} />,
+    metric: '70%',
+    label: 'Processing Time Reduction',
+    desc: 'Automated OCR pipelines at Infomatics Services eliminated manual data entry bottlenecks.',
+    color: '#00ffd1',
+  },
+  {
+    icon: <Shield size={16} />,
+    metric: '100%',
+    label: 'Audit Coverage',
+    desc: 'PostgreSQL validation engines with triggers ensure zero data integrity violations across compliance datasets.',
     color: '#f59e0b',
   },
   {
-    quote:
-      "Her CardPulse OCR integration pipeline is production-ready. The structured data extraction logic and schema validation she built would scale effortlessly in enterprise environments.",
-    name: 'Gemini Pro',
-    role: 'AI Code Assistant',
-    icon: <Bot size={16} />,
+    icon: <Clock size={16} />,
+    metric: '50+',
+    label: 'Enterprise Clients Served',
+    desc: 'Regulatory deadline tracking system monitors filing obligations for compliance teams.',
     color: '#38bdf8',
   },
   {
-    quote:
-      "Working with Rishika on the compliance automation platform was seamless. She ships fast, thinks in systems, and her Docker deployments are always rock-solid.",
-    name: 'DevOps Lead',
-    role: 'Infomatics Services',
-    icon: <User size={16} />,
-    color: '#00ffd1',
+    icon: <Database size={16} />,
+    metric: '<100ms',
+    label: 'Query Response Time',
+    desc: 'Optimized PostgreSQL schemas with materialized views for sub-second compliance lookups.',
+    color: '#a78bfa',
   },
 ];
 
-export default function Testimonials() {
+export default function ImpactMetrics() {
   return (
     <section id="endorsements" className="bg-[#050505] py-24 relative overflow-hidden">
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/[0.02] rounded-full blur-[150px] pointer-events-none" />
@@ -43,43 +47,53 @@ export default function Testimonials() {
         >
           <div className="inline-flex items-center gap-2 bg-white/[0.03] border border-white/[0.06] rounded-full px-4 py-1.5 text-xs text-gray-500 mb-5 font-mono">
             <MessageSquare size={12} />
-            endorsements.json
+            impact_metrics.json
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
-            Peer <span className="gradient-text">Endorsements</span>
+            Measurable <span className="gradient-text">Impact</span>
           </h2>
           <p className="text-gray-500 text-sm max-w-md mx-auto">
-            What AI coding partners and team leads say about collaborating with me.
+            Quantified outcomes from production systems built for enterprise compliance and AI automation.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-4">
-          {testimonials.map((t, i) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {impactMetrics.map((item, i) => (
             <motion.div
-              key={t.name}
+              key={item.label}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="glass-card rounded-2xl p-6 hover:bg-white/[0.04] transition-all duration-300 flex flex-col"
             >
-              <Quote size={20} className="text-accent/30 mb-4" />
-              <p className="text-gray-300 text-sm leading-relaxed mb-6 flex-1">"{t.quote}"</p>
-              <div className="flex items-center gap-3 pt-4 border-t border-white/[0.04]">
-                <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: t.color + '15', color: t.color }}
-                >
-                  {t.icon}
-                </div>
-                <div>
-                  <div className="text-white text-sm font-medium">{t.name}</div>
-                  <div className="text-gray-600 text-xs font-mono">{t.role}</div>
-                </div>
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/[0.08] mb-4"
+                style={{ backgroundColor: item.color + '12', color: item.color }}
+              >
+                {item.icon}
               </div>
+              <div className="text-3xl font-bold mb-1" style={{ color: item.color }}>
+                {item.metric}
+              </div>
+              <div className="text-white text-sm font-medium mb-3">{item.label}</div>
+              <p className="text-gray-500 text-xs leading-relaxed flex-1">{item.desc}</p>
             </motion.div>
           ))}
         </div>
+
+        {/* Note about future testimonials */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center mt-12"
+        >
+          <p className="text-gray-600 text-xs font-mono">
+            <span className="text-accent">*</span> Verified peer testimonials with LinkedIn attribution coming soon.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

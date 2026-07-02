@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, Cpu, Code2, Server, Star } from 'lucide-react';
+import { Check, Cpu, Code2, Server, Star, Database, GitBranch, Container } from 'lucide-react';
 
 const domains = [
   {
@@ -9,45 +9,56 @@ const domains = [
     color: '#38bdf8',
     highlighted: false,
     skills: [
-      'Python Development',
-      'React & TypeScript',
-      'REST API Design',
-      'SQL / SQLAlchemy models',
-      'Compliance trackers',
-      'Data validation logic',
+      { name: 'Python Development', level: 'Advanced' },
+      { name: 'FastAPI / REST APIs', level: 'Advanced' },
+      { name: 'PostgreSQL / SQLAlchemy', level: 'Advanced' },
+      { name: 'MS SQL Server', level: 'Intermediate' },
+      { name: 'Data validation logic', level: 'Advanced' },
+      { name: 'Compliance trackers', level: 'Advanced' },
     ],
   },
   {
     name: 'AI & Data Engineering',
     icon: <Cpu size={18} />,
-    description: 'Practical integration of generative AI models and semantic vectors.',
+    description: 'Practical integration of generative AI models, semantic vectors, and agent orchestration.',
     color: '#00ffd1',
     highlighted: true,
     skills: [
-      'RAG Architectures',
-      'Vector Search (Pinecone)',
-      'Gemini Integration',
-      'Prompt Engineering',
-      'Azure Doc Intelligence',
-      'Structured OCR Parsing',
+      { name: 'RAG Architectures', level: 'Advanced' },
+      { name: 'LangGraph Orchestration', level: 'Advanced' },
+      { name: 'Vector Search (Pinecone)', level: 'Advanced' },
+      { name: 'Gemini / OpenAI Integration', level: 'Advanced' },
+      { name: 'Azure Document Intelligence', level: 'Advanced' },
+      { name: 'Ollama / Local LLMs', level: 'Intermediate' },
+      { name: 'Prompt Engineering', level: 'Advanced' },
+      { name: 'InsightFace / Computer Vision', level: 'Intermediate' },
     ],
   },
   {
     name: 'DevOps & Systems',
     icon: <Server size={18} />,
-    description: 'Containerized deployment setups and continuous workflows.',
+    description: 'Containerized deployment setups and continuous integration workflows.',
     color: '#f59e0b',
     highlighted: false,
     skills: [
-      'Docker Containerization',
-      'CI/CD release workflows',
-      'Ubuntu Server administration',
-      'Git / GitHub version control',
-      'On-premise config support',
-      'REST API servers',
+      { name: 'Docker Containerization', level: 'Advanced' },
+      { name: 'CI/CD Pipelines', level: 'Intermediate' },
+      { name: 'Ubuntu Server Administration', level: 'Advanced' },
+      { name: 'Git / GitHub', level: 'Advanced' },
+      { name: 'GitHub Actions', level: 'Intermediate' },
+      { name: 'Nginx / Reverse Proxy', level: 'Intermediate' },
     ],
   },
 ];
+
+const skillLevelBadge = (level: string) => {
+  const colors: Record<string, string> = {
+    Advanced: 'bg-accent/10 text-accent border-accent/20',
+    Intermediate: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+    Beginner: 'bg-gray-500/10 text-gray-400 border-gray-500/20',
+  };
+  return colors[level] || colors.Beginner;
+};
 
 export default function Pricing() {
   return (
@@ -70,7 +81,7 @@ export default function Pricing() {
             <span className="gradient-text">Competence</span>
           </h2>
           <p className="text-gray-500 max-w-md mx-auto text-sm">
-            Practical skills in core backend systems, database modeling, cloud systems, and generative AI features.
+            Backend-first skill set spanning AI orchestration, database architecture, compliance engineering, and DevOps.
           </p>
         </motion.div>
 
@@ -116,14 +127,19 @@ export default function Pricing() {
 
                 <ul className="flex flex-col gap-3 mt-4">
                   {dom.skills.map((skill) => (
-                    <li key={skill} className="flex items-start gap-2.5">
+                    <li key={skill.name} className="flex items-start gap-2.5">
                       <div
                         className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
                         style={{ backgroundColor: dom.color + '15' }}
                       >
                         <Check size={9} style={{ color: dom.color }} strokeWidth={3} />
                       </div>
-                      <span className="text-gray-400 text-sm font-medium">{skill}</span>
+                      <div className="flex items-center justify-between flex-1">
+                        <span className="text-gray-400 text-sm font-medium">{skill.name}</span>
+                        <span className={`text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border ${skillLevelBadge(skill.level)}`}>
+                          {skill.level}
+                        </span>
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -141,7 +157,7 @@ export default function Pricing() {
           className="text-center mt-12 bg-white/[0.02] border border-white/[0.06] rounded-xl p-5 max-w-xl mx-auto"
         >
           <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
-            <span className="text-accent">◈</span>
+            <span className="text-accent">&#9670;</span>
             Certified Full-Stack Developer — <span className="text-white font-medium">DVOC Institute Professional Program</span>
           </div>
         </motion.div>

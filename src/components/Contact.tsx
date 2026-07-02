@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Send, Mail, MapPin, Clock, ArrowUpRight } from 'lucide-react';
+import { Send, Mail, MapPin, Clock, ArrowUpRight, Linkedin, Github, Download, Phone, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Contact() {
@@ -8,6 +8,11 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // NOTE: This is a client-side demo. For production, integrate with:
+    // - EmailJS (no backend needed)
+    // - Formspree / Getform / Basin
+    // - Netlify Forms (if deployed on Netlify)
+    // - Custom FastAPI backend with SMTP
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -32,11 +37,39 @@ export default function Contact() {
             contact.form
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
-            Let's <span className="gradient-text">Connect</span>
+            Let&apos;s <span className="gradient-text">Connect</span>
           </h2>
           <p className="text-gray-500 text-sm max-w-md mx-auto">
-            Open to backend engineering roles, AI automation projects, and vibe-coding collaborations.
+            Open to backend engineering roles, AI automation projects, and compliance system consulting.
           </p>
+        </motion.div>
+
+        {/* Resume CTA Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-8 bg-accent/5 border border-accent/20 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
+              <Download size={18} className="text-accent" />
+            </div>
+            <div>
+              <div className="text-white text-sm font-semibold">Download My Resume</div>
+              <div className="text-gray-500 text-xs">Rishika_Vishwakarma_Resume.pdf · 157 KB</div>
+            </div>
+          </div>
+          <a
+            href="/Rishika_Vishwakarma_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-accent text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[#00e6bc] transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,209,0.2)]"
+          >
+            <Download size={14} />
+            Download
+          </a>
         </motion.div>
 
         <div className="grid lg:grid-cols-5 gap-8">
@@ -59,6 +92,32 @@ export default function Contact() {
               >
                 rishikavish16@gmail.com
               </a>
+              <div className="mt-2 flex flex-col gap-1">
+                <a
+                  href="https://linkedin.com/in/rishika-vishwakarma"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-500 text-xs hover:text-accent transition-colors flex items-center gap-1.5"
+                >
+                  <Linkedin size={12} /> linkedin.com/in/rishika-vishwakarma
+                </a>
+                <a
+                  href="https://github.com/Rishika1603"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-500 text-xs hover:text-accent transition-colors flex items-center gap-1.5"
+                >
+                  <Github size={12} /> github.com/Rishika1603
+                </a>
+              </div>
+            </div>
+
+            <div className="glass-card rounded-2xl p-5 hover:bg-white/[0.04] transition-all duration-300">
+              <div className="flex items-center gap-3 mb-2">
+                <Phone size={16} className="text-accent" />
+                <span className="text-white text-sm font-medium">Phone</span>
+              </div>
+              <p className="text-gray-400 text-sm font-mono">Available on request via email</p>
             </div>
 
             <div className="glass-card rounded-2xl p-5 hover:bg-white/[0.04] transition-all duration-300">
@@ -67,6 +126,7 @@ export default function Contact() {
                 <span className="text-white text-sm font-medium">Location</span>
               </div>
               <p className="text-gray-400 text-sm font-mono">Mumbai, Maharashtra, India</p>
+              <p className="text-gray-600 text-xs mt-1">Open to remote & relocation</p>
             </div>
 
             <div className="glass-card rounded-2xl p-5 hover:bg-white/[0.04] transition-all duration-300">
@@ -78,10 +138,10 @@ export default function Contact() {
             </div>
 
             <a
-              href="https://calendly.com"
+              href="https://calendly.com/rishika-vishwakarma"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full bg-accent text-black text-sm font-semibold py-3 rounded-xl hover:bg-[#00e6bc] transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,209,0.2)]"
+              className="flex items-center justify-center gap-2 w-full bg-white/[0.03] border border-white/[0.1] text-white text-sm font-semibold py-3 rounded-xl hover:bg-white/[0.06] hover:border-white/20 transition-all duration-300"
             >
               Schedule a Call
               <ArrowUpRight size={14} />
@@ -172,6 +232,15 @@ export default function Contact() {
                   </>
                 )}
               </button>
+
+              {/* Form endpoint note */}
+              <div className="flex items-start gap-2 bg-amber-500/5 border border-amber-500/20 rounded-lg p-3">
+                <AlertCircle size={14} className="text-amber-400 flex-shrink-0 mt-0.5" />
+                <p className="text-amber-400/80 text-xs leading-relaxed">
+                  <span className="font-medium">Note:</span> This form is currently client-side demo only.
+                  For production, integrate with EmailJS, Formspree, or your own FastAPI backend.
+                </p>
+              </div>
             </form>
           </motion.div>
         </div>

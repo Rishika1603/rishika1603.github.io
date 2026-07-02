@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Award, CalendarDays } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, CalendarDays, TrendingDown, Bot, Database, Container } from 'lucide-react';
 
 const timeline = [
   {
@@ -11,8 +11,14 @@ const timeline = [
     period: 'April 2025 — Present',
     description:
       'Building compliance automation platforms with Python & PostgreSQL. Designing REST APIs, OCR integrations (Azure Document Intelligence), and Dockerized deployments on Ubuntu servers.',
+    achievements: [
+      { icon: <TrendingDown size={12} />, text: 'Reduced document processing time by 70% via automated OCR pipelines' },
+      { icon: <Database size={12} />, text: 'Designed PostgreSQL validation engines with 100% data integrity coverage' },
+      { icon: <Container size={12} />, text: 'Dockerized 4+ compliance microservices for Ubuntu production servers' },
+      { icon: <Bot size={12} />, text: 'Integrated Azure Document Intelligence for structured KYC data extraction' },
+    ],
     color: '#00ffd1',
-    tags: ['Python', 'PostgreSQL', 'Docker', 'Azure OCR'],
+    tags: ['Python', 'PostgreSQL', 'Docker', 'Azure OCR', 'FastAPI'],
   },
   {
     type: 'education',
@@ -22,9 +28,13 @@ const timeline = [
     location: 'Mumbai, MH',
     period: 'June 2022 — May 2023',
     description:
-      'Completed degree in Information Technology with focus on software engineering, database systems, and web development fundamentals.',
+      'Completed Bachelor of Science in Information Technology with focus on software engineering, database systems, and web development fundamentals.',
+    achievements: [
+      { icon: <Database size={12} />, text: 'Specialized in relational database design and optimization' },
+      { icon: <Bot size={12} />, text: 'Capstone project: AI-powered exam preparation assistant (NISM AI)' },
+    ],
     color: '#38bdf8',
-    tags: ['Software Engineering', 'Databases', 'Web Dev'],
+    tags: ['Software Engineering', 'Databases', 'Web Dev', 'Project Management'],
   },
   {
     type: 'cert',
@@ -34,9 +44,12 @@ const timeline = [
     location: 'Professional Program',
     period: '2023',
     description:
-      'Intensive professional program covering full-stack development, modern frameworks, and industry best practices.',
+      'Intensive professional program covering full-stack development, modern frameworks (React, Node.js), and industry best practices including CI/CD and Agile methodologies.',
+    achievements: [
+      { icon: <Container size={12} />, text: 'Built and deployed 5+ full-stack projects with Docker containers' },
+    ],
     color: '#f59e0b',
-    tags: ['Full-Stack', 'React', 'Node.js'],
+    tags: ['Full-Stack', 'React', 'Node.js', 'Docker', 'CI/CD'],
   },
 ];
 
@@ -61,7 +74,7 @@ export default function Timeline() {
             Career <span className="gradient-text">Journey</span>
           </h2>
           <p className="text-gray-500 text-sm max-w-md mx-auto">
-            From academic foundations to building AI-powered enterprise compliance systems.
+            From academic foundations to building AI-powered enterprise compliance systems with measurable impact.
           </p>
         </motion.div>
 
@@ -109,6 +122,20 @@ export default function Timeline() {
                     {item.org} · {item.location}
                   </p>
                   <p className="text-gray-400 text-sm leading-relaxed mb-4">{item.description}</p>
+
+                  {/* Achievements */}
+                  {item.achievements && item.achievements.length > 0 && (
+                    <div className="space-y-2 mb-4">
+                      {item.achievements.map((a, j) => (
+                        <div key={j} className="flex items-start gap-2.5 bg-white/[0.02] border border-white/[0.06] rounded-lg p-2.5">
+                          <div className="w-5 h-5 rounded-md bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span className="text-accent">{a.icon}</span>
+                          </div>
+                          <span className="text-gray-300 text-xs leading-relaxed">{a.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   <div className="flex flex-wrap gap-1.5">
                     {item.tags.map((tag) => (

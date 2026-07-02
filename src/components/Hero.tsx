@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Code2 } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Code2, Download, ExternalLink } from 'lucide-react';
 
 function TypewriterText({ text, delay = 0 }: { text: string; delay?: number }) {
   const [displayed, setDisplayed] = useState('');
@@ -21,7 +21,7 @@ function TypewriterText({ text, delay = 0 }: { text: string; delay?: number }) {
   return (
     <span className="font-mono text-accent/80">
       {displayed}
-      <span className="animate-pulse">▋</span>
+      <span className="animate-pulse">&#9646;</span>
     </span>
   );
 }
@@ -75,62 +75,101 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Headline */}
+        {/* Profile Photo + Headline row */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-center mb-6"
+          className="text-center mb-4"
         >
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[0.95] tracking-tighter mb-6">
+          {/* Avatar */}
+          <div className="flex justify-center mb-6">
+            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-accent/20 to-[#a78bfa]/20 border border-white/[0.1] flex items-center justify-center relative overflow-hidden">
+              <div className="absolute inset-0 grid-bg opacity-50" />
+              <span className="relative z-10 text-2xl font-bold text-white font-mono">RV</span>
+              <div className="absolute bottom-1.5 right-1.5 w-3.5 h-3.5 bg-accent rounded-full border-2 border-[#050505]" title="Open to opportunities" />
+            </div>
+          </div>
+
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[0.95] tracking-tighter mb-2">
             Rishika
             <br />
             <span className="gradient-text">Vishwakarma</span>
           </h1>
+          <p className="text-gray-500 text-sm md:text-base font-medium mt-3">
+            Backend & AI Systems Engineer
+          </p>
         </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center text-gray-400 text-base md:text-lg max-w-xl mx-auto mb-12 leading-relaxed"
+          className="text-center text-gray-400 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
         >
           Building compliant, robust, and AI-powered enterprise systems.
           <br className="hidden md:block" />
-          <span className="text-gray-500">I vibe-code production backends with Python, PostgreSQL, and AI agents — shipping fast without breaking things.</span>
+          <span className="text-gray-500">I orchestrate AI agents, compliance engines, and data pipelines — shipping production backends with Python, PostgreSQL, and Docker.</span>
         </motion.p>
 
-        {/* Social & Contact Actions */}
+        {/* CTA Actions */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col items-center gap-3 mb-10 sm:flex-row"
+          className="flex flex-wrap justify-center gap-3 mb-8"
         >
           <a
-            href="https://github.com"
+            href="#projects"
+            className="flex items-center gap-2 bg-accent text-black px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#00e6bc] transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,209,0.25)]"
+          >
+            View My Work
+            <ArrowRight size={15} />
+          </a>
+          <a
+            href="/Rishika_Vishwakarma_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 border border-white/[0.1] text-gray-300 px-5 py-2.5 rounded-full text-sm font-medium hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300"
           >
-            <Github size={15} />
+            <Download size={15} />
+            Download Resume
+          </a>
+        </motion.div>
+
+        {/* Social Links */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="flex justify-center gap-3 mb-10"
+        >
+          <a
+            href="https://github.com/Rishika1603"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 border border-white/[0.1] text-gray-300 px-4 py-2 rounded-full text-xs font-medium hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300"
+          >
+            <Github size={14} />
             GitHub
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://linkedin.com/in/rishika-vishwakarma"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 border border-white/[0.1] text-gray-300 px-5 py-2.5 rounded-full text-sm font-medium hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300"
+            className="flex items-center gap-2 border border-white/[0.1] text-gray-300 px-4 py-2 rounded-full text-xs font-medium hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300"
           >
-            <Linkedin size={15} />
+            <Linkedin size={14} />
             LinkedIn
           </a>
           <a
-            href="#experience"
-            className="flex items-center gap-2 bg-accent text-black px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#00e6bc] transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,209,0.25)]"
+            href="/Rishika_Vishwakarma_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 border border-white/[0.1] text-gray-300 px-4 py-2 rounded-full text-xs font-medium hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300"
           >
-            View Projects
-            <ArrowRight size={15} />
+            <ExternalLink size={14} />
+            Resume
           </a>
         </motion.div>
 
@@ -139,7 +178,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="flex flex-wrap justify-center gap-16 mt-20 border-t border-white/[0.06] pt-10"
+          className="flex flex-wrap justify-center gap-16 mt-16 border-t border-white/[0.06] pt-10"
         >
           {[
             { label: 'Role', value: 'Backend & AI Dev' },
