@@ -84,9 +84,12 @@ export default function Hero() {
         >
           {/* Avatar */}
           <div className="flex justify-center mb-6">
-            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-accent/20 to-[#a78bfa]/20 border border-white/[0.1] flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 grid-bg opacity-50" />
-              <span className="relative z-10 text-2xl font-bold text-white font-mono">RV</span>
+            <div className="relative">
+              <img
+                src="/avatar.jpg"
+                alt="Rishika Vishwakarma"
+                className="w-24 h-24 rounded-2xl object-cover border border-white/[0.1]"
+              />
               <div className="absolute bottom-1.5 right-1.5 w-3.5 h-3.5 bg-accent rounded-full border-2 border-[#050505]" title="Open to opportunities" />
             </div>
           </div>
