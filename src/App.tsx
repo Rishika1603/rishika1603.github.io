@@ -4,8 +4,6 @@ import About from './components/About';
 import CaseStudies from './components/CaseStudies';
 import Projects from './components/Projects';
 import Timeline from './components/Timeline';
-import Pricing from './components/Pricing';
-import Testimonials from './components/Testimonials';
 import Now from './components/Now';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -23,8 +21,6 @@ export default function App() {
       <CaseStudies />
       <Projects />
       <Timeline />
-      <Pricing />
-      <Testimonials />
       <Now />
       <Contact />
       <Footer />

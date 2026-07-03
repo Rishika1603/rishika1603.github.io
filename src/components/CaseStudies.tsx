@@ -329,21 +329,13 @@ async for event in app.astream(input={...}, config={...}):
             />
           ))}
         </div>
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }} className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            { label: 'Systems Designed', value: '8+' },
-            { label: 'Lines of Code', value: '50K+' },
-            { label: 'Users Impacted', value: '10K+' },
-            { label: 'Uptime SLA', value: '99.9%' },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-              <div className="text-2xl font-bold text-white">{stat.value}</div>
-              <div className="text-[10px] text-gray-600 mt-1 font-mono uppercase tracking-wider">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-12"
+        />
       </div>
     </section>
   );
