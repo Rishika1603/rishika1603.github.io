@@ -2,6 +2,52 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github, Sparkles, FileText, CalendarDays, ShieldAlert, ArrowUpRight, Layers, Bot, Eye, BrainCircuit, Activity } from 'lucide-react';
 import { useState } from 'react';
 
+function PulseRing() {
+  return (
+    <div className="relative flex items-center justify-center">
+      <span className="absolute inline-flex h-16 w-16 rounded-full border border-white/10 animate-ping opacity-40" />
+      <span className="relative inline-flex h-12 w-12 rounded-full border border-white/20 items-center justify-center bg-white/[0.04] backdrop-blur-sm">
+        <Layers size={18} className="text-gray-400" />
+      </span>
+    </div>
+  );
+}
+
+function InternalProjectScreenshot({ color }: { color: string }) {
+  return (
+    <div className="relative h-40 border-b border-white/[0.06] overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.04] to-transparent" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <motion.div
+          className="flex flex-col items-center gap-3 text-center"
+          animate={{ opacity: [0.6, 1, 0.6], y: [4, -4, 4] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <motion.div
+            className="relative flex items-center justify-center"
+            animate={{ scale: [1, 1.08, 1] }}
+            transition={{ duration: 3.6, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <PulseRing />
+          </motion.div>
+          <div className="px-3 py-1 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-sm text-[10px] text-gray-400 font-mono uppercase tracking-wider">
+            Internal Project
+          </div>
+        </motion.div>
+      </div>
+      <div className="absolute bottom-3 left-0 right-0 flex justify-center">
+        <motion.div
+          className="h-px rounded-full"
+          style={{ backgroundColor: color + '55' }}
+          initial={{ width: 0 }}
+          animate={{ width: '60%' }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+        />
+      </div>
+    </div>
+  );
+}
+
 const projects = [
   {
     title: 'dev-agents',
@@ -41,101 +87,85 @@ const projects = [
   },
   {
     title: 'TrilliumReconAI',
-    status: 'Completed',
+    status: 'Production',
     statusColor: '#ef4444',
-    category: 'AI & Data',
-    description:
-      'Facial recognition and identity verification system using InsightFace and MS SQL Server. Real-time face detection, feature extraction, and matching for secure access control scenarios.',
-    challenge: 'Organizations needed high-accuracy facial verification with sub-second matching against large identity databases.',
-    solution: 'Built InsightFace pipeline with MS SQL Server backend for persistent biometric storage and real-time matching APIs.',
-    result: 'Achieved 99.2% verification accuracy with <200ms response time on 10K+ identity dataset.',
-    icon: <Eye size={18} />,
+    category: 'Compliance',
+    description: 'Financial reconciliation engine with automated transaction matching, maker-checker approval workflows, and real-time audit trail reporting.',
+    challenge: 'Manual reconciliation and error-prone spreadsheets created compliance risk at scale.',
+    solution: 'FastAPI, PostgreSQL, Celery, Redis, and Nginx with deterministic matching and rollback-safe batch processing.',
+    result: '92% auto-classification, faster reconciliation cycles, and audit-ready reporting with zero missing approvals.',
+    icon: <ShieldAlert size={18} />,
     color: '#ef4444',
-    tags: ['InsightFace', 'MS SQL Server', 'Python', 'FastAPI', 'Computer Vision'],
-    links: [
-      { label: 'Code', icon: <Github size={12} />, href: 'https://github.com/Rishika1603' },
-      { label: 'Docs', icon: <ExternalLink size={12} />, href: '#docs-coming-soon' },
-    ],
+    tags: ['FastAPI', 'PostgreSQL', 'Celery', 'Redis', 'Nginx', 'Compliance'],
+    internal: true,
+    links: [],
   },
   {
     title: 'NISM AI',
-    status: 'Completed',
+    status: 'Internal',
     statusColor: '#f59e0b',
     category: 'AI & Data',
-    description:
-      'AI-powered NISM (National Institute of Securities Markets) exam preparation assistant with RAG-based question generation, explanation generation, and performance analytics.',
-    challenge: 'Finance professionals struggled with personalized, adaptive exam preparation for regulatory certifications.',
-    solution: 'Built a RAG system over NISM syllabus documents with LLM-generated explanations and spaced-repetition scheduling.',
-    result: 'Beta testers reported 40% faster concept mastery vs traditional study methods.',
+    description: 'AI-powered exam preparation and regulatory knowledge assistant using RAG over NISM syllabus with adaptive question generation and performance analytics.',
+    challenge: 'Regulatory exam preparation relied on static PDFs and fragmented notes.',
+    solution: 'LangChain pipeline over indexed syllabus documents with retrieval, explanations, and spaced-repetition review.',
+    result: 'Testers noted faster concept mastery and stronger retention versus static study materials.',
     icon: <BrainCircuit size={18} />,
     color: '#f59e0b',
     tags: ['RAG', 'LangChain', 'PostgreSQL', 'Python', 'LLM', 'Education'],
-    links: [
-      { label: 'Code', icon: <Github size={12} />, href: 'https://github.com/Rishika1603' },
-      { label: 'Live', icon: <ExternalLink size={12} />, href: '#demo-coming-soon' },
-    ],
+    internal: true,
+    links: [],
   },
   {
     title: 'Compluse',
     status: 'Production',
     statusColor: '#f59e0b',
     category: 'Compliance',
-    description:
-      'Compliance calendar and regulatory deadline tracking system with structured PostgreSQL schema. Automates reminder workflows and ensures enterprises never miss critical filing dates.',
-    challenge: 'Compliance teams missed regulatory deadlines due to fragmented tracking across spreadsheets and emails.',
-    solution: 'Designed PostgreSQL schema with triggers for deadline propagation + automated email/SMS reminder workflows.',
-    result: 'Zero missed deadlines for 50+ enterprise clients; 100% audit trail coverage.',
+    description: 'Compliance calendar and regulatory deadline tracking system with automated reminders and audit logs.',
+    challenge: 'Compliance teams missed regulatory deadlines across fragmented tracking methods.',
+    solution: 'PostgreSQL-backed calendar automation with triggers and email/SMS reminder workflows.',
+    result: 'Dependable deadline tracking for enterprise clients with complete audit history.',
     icon: <CalendarDays size={18} />,
     color: '#f59e0b',
     tags: ['Python', 'PostgreSQL', 'Compliance', 'Calendar Automation', 'Triggers'],
-    links: [
-      { label: 'Code', icon: <Github size={12} />, href: 'https://github.com/Rishika1603' },
-      { label: 'Docs', icon: <ExternalLink size={12} />, href: '#docs-coming-soon' },
-    ],
+    internal: true,
+    links: [],
   },
   {
     title: 'NovusLite',
     status: 'Production',
     statusColor: '#ef4444',
     category: 'Compliance',
-    description:
-      'Secure insider trading compliance workflow system with backend validation engines and automated reporting logic. Tracks employee trades against regulatory rules in real-time.',
-    challenge: 'Financial firms needed real-time trade validation against SEBI insider trading regulations with automated reporting.',
-    solution: 'Built rule engine with PostgreSQL triggers + automated PDF report generation + escalation workflows.',
-    result: 'Identified 12 potential violations in first quarter; reduced manual review effort by 80%.',
+    description: 'Insider trading validation and compliance workflow engine with rule checks and automated reporting.',
+    challenge: 'Manual trade-rule validation was slow and inconsistent across reviewers.',
+    solution: 'Validation engine with PostgreSQL-backed rules, PDF report generation, and escalation workflows.',
+    result: 'Reduced manual review time and improved consistency in regulatory checks.',
     icon: <ShieldAlert size={18} />,
     color: '#ef4444',
     tags: ['Python', 'Validation Engine', 'Compliance', 'Reporting', 'PostgreSQL'],
-    links: [
-      { label: 'Code', icon: <Github size={12} />, href: 'https://github.com/Rishika1603' },
-      { label: 'Live', icon: <ExternalLink size={12} />, href: '#demo-coming-soon' },
-    ],
+    internal: true,
+    links: [],
   },
   {
     title: 'CardPulse',
     status: 'Production',
     statusColor: '#38bdf8',
     category: 'Backend',
-    description:
-      'OCR-based structured data extraction system using Azure Document Intelligence. Parses complex documents into validated JSON and syncs directly with PostgreSQL databases.',
-    challenge: 'Manual data entry from KYC documents caused 70% processing delays and human error in compliance workflows.',
-    solution: 'Integrated Azure Document Intelligence with custom schema validation and PostgreSQL sync pipelines.',
-    result: 'Reduced document processing time by 70%; achieved 95% field extraction accuracy on structured forms.',
+    description: 'OCR-based structured data extraction system using Azure Document Intelligence to parse documents into validated JSON and sync to PostgreSQL.',
+    challenge: 'Manual document extraction caused compliance processing delays and errors.',
+    solution: 'Azure OCR with custom schema validation and PostgreSQL sync pipelines.',
+    result: 'Significantly faster document processing with strong field extraction accuracy.',
     icon: <FileText size={18} />,
     color: '#38bdf8',
     tags: ['Azure OCR', 'PostgreSQL', 'JSON Schema', 'Document Intelligence', 'Python'],
-    links: [
-      { label: 'Code', icon: <Github size={12} />, href: 'https://github.com/Rishika1603' },
-      { label: 'Demo', icon: <ExternalLink size={12} />, href: '#demo-coming-soon' },
-    ],
+    internal: true,
+    links: [],
   },
   {
     title: 'Compliance Automation Platform',
     status: 'In Progress',
     statusColor: '#00ffd1',
     category: 'Compliance',
-    description:
-      'Enterprise-grade compliance automation platform combining deadline tracking, insider trading validation, OCR ingestion, and AI-powered risk scoring into a unified dashboard.',
+    description: 'Enterprise-grade compliance automation platform combining deadline tracking, insider trading validation, OCR ingestion, and AI-powered risk scoring into a unified dashboard.',
     challenge: 'Fragmented compliance tools created data silos and missed cross-functional risk signals.',
     solution: 'Unified Compluse, NovusLite, and CardPulse into a single FastAPI backend with React dashboard and role-based access.',
     result: 'Consolidated 3 separate tools into 1 platform; reduced compliance team tool-switching by 60%.',
@@ -212,31 +242,36 @@ export default function Projects() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="group glass-card rounded-2xl overflow-hidden hover:bg-white/[0.04] transition-all duration-300 flex flex-col"
             >
-              {/* Screenshot placeholder */}
-              <div className="relative h-40 bg-gradient-to-br from-white/[0.03] to-white/[0.01] border-b border-white/[0.06] flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 grid-bg opacity-30" />
-                <div className="relative z-10 flex flex-col items-center gap-2">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center border border-white/[0.08]"
-                    style={{ backgroundColor: project.color + '12', color: project.color }}
-                  >
-                    {project.icon}
-                  </div>
-                  <span className="text-[10px] text-gray-600 font-mono uppercase tracking-wider">Screenshot Coming Soon</span>
-                </div>
-                <div className="absolute top-3 right-3">
-                  <span
-                    className="text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full font-mono border"
-                    style={{
-                      backgroundColor: project.statusColor + '12',
-                      color: project.statusColor,
-                      borderColor: project.statusColor + '20',
-                    }}
-                  >
-                    {project.status}
-                  </span>
-                </div>
-              </div>
+              {/* Screenshot area */}
+
+{project.internal ? (
+  <InternalProjectScreenshot color={project.color} />
+) : (
+  <div className="relative h-40 bg-gradient-to-br from-white/[0.03] to-white/[0.01] border-b border-white/[0.06] flex items-center justify-center overflow-hidden">
+    <div className="absolute inset-0 grid-bg opacity-30" />
+    <div className="relative z-10 flex flex-col items-center gap-2">
+      <div
+        className="w-12 h-12 rounded-xl flex items-center justify-center border border-white/[0.08]"
+        style={{ backgroundColor: project.color + '12', color: project.color }}
+      >
+        {project.icon}
+      </div>
+      <span className="text-[10px] text-gray-600 font-mono uppercase tracking-wider">Screenshot Coming Soon</span>
+    </div>
+    <div className="absolute top-3 right-3">
+      <span
+        className="text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full font-mono border"
+        style={{
+          backgroundColor: project.statusColor + '12',
+          color: project.statusColor,
+          borderColor: project.statusColor + '20',
+        }}
+      >
+        {project.status}
+      </span>
+    </div>
+  </div>
+)}
 
               <div className="p-6 flex-1 flex flex-col">
                 <h3 className="text-white text-base font-semibold mb-2">{project.title}</h3>

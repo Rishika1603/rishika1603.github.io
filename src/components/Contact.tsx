@@ -117,7 +117,7 @@ export default function Contact() {
                 <Phone size={16} className="text-accent" />
                 <span className="text-white text-sm font-medium">Phone</span>
               </div>
-              <p className="text-gray-400 text-sm font-mono">Available on request via email</p>
+              <p className="text-gray-400 text-sm font-mono">9833774165</p>
             </div>
 
             <div className="glass-card rounded-2xl p-5 hover:bg-white/[0.04] transition-all duration-300">

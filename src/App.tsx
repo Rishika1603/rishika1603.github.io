@@ -1,7 +1,8 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import NodeCanvas from './components/NodeCanvas';
+import CaseStudies from './components/CaseStudies';
+import Projects from './components/Projects';
 import Timeline from './components/Timeline';
 import Pricing from './components/Pricing';
 import Testimonials from './components/Testimonials';
@@ -19,7 +20,8 @@ export default function App() {
       <Navbar />
       <Hero />
       <About />
-      <NodeCanvas />
+      <CaseStudies />
+      <Projects />
       <Timeline />
       <Pricing />
       <Testimonials />

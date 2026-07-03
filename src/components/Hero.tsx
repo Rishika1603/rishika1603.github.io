@@ -21,13 +21,14 @@ function TypewriterText({ text, delay = 0 }: { text: string; delay?: number }) {
   return (
     <span className="font-mono text-accent/80">
       {displayed}
-      <span className="animate-pulse">&#9646;</span>
+      <span className="animate-pulse">▋</span>
     </span>
   );
 }
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -62,48 +63,86 @@ export default function Hero() {
         }}
         className="max-w-6xl mx-auto px-6 relative w-full"
       >
-        {/* Badge */}
+        {/* Profile Photo with Pop-up Hover */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="flex justify-center mb-8"
         >
-          <div className="flex items-center gap-2 bg-white/[0.03] border border-white/[0.08] rounded-full px-4 py-1.5 text-xs text-gray-400 backdrop-blur-sm font-mono">
-            <Code2 size={12} className="text-accent" />
-            <TypewriterText text="Backend Engineer & Vibe Coder" delay={600} />
+          <div className="flex items-center gap-4">
+            <motion.div
+              className="relative w-24 h-24 rounded-full border-2 border-white/[0.25] bg-white/[0.05] flex items-center justify-center overflow-hidden cursor-pointer"
+              onHoverStart={() => setHovered(true)}
+              onHoverEnd={() => setHovered(false)}
+              animate={{}}
+            >
+              <motion.img
+                src="/profile.jpg"
+                alt="Rishika Vishwakarma"
+                className="w-full h-full object-cover"
+                animate={{ scale: hovered ? 1.15 : 1 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              />
+              {/* Pop-up expanded photo overlay */}
+              {hovered && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                  transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-sm pointer-events-none"
+                >
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl border border-white/20"
+                  >
+                    <img
+                      src="/profile.jpg"
+                      alt="Rishika Vishwakarma"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center">
+                      <p className="text-white font-semibold text-lg">Rishika Vishwakarma</p>
+                      <p className="text-accent text-sm font-mono">AI FULL STACK DEVELOPER</p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              )}
+            </motion.div>
+            <motion.div
+              className="hidden sm:flex items-center gap-2 bg-white/[0.03] border border-white/[0.08] rounded-full px-4 py-1.5 text-xs text-gray-400 backdrop-blur-sm font-mono"
+              animate={{}}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+            >
+              <Code2 size={12} className="text-accent" />
+              <TypewriterText text="AI FULL STACK DEVELOPER" delay={600} />
+            </motion.div>
           </div>
         </motion.div>
 
-        {/* Profile Photo + Headline row */}
+        {/* Headline */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center mb-4"
         >
-          {/* Avatar */}
-          <div className="flex justify-center mb-6">
-            <div className="relative">
-              <img
-                src="/avatar.jpg"
-                alt="Rishika Vishwakarma"
-                className="w-24 h-24 rounded-2xl object-cover border border-white/[0.1]"
-              />
-              <div className="absolute bottom-1.5 right-1.5 w-3.5 h-3.5 bg-accent rounded-full border-2 border-[#050505]" title="Open to opportunities" />
-            </div>
-          </div>
-
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[0.95] tracking-tighter mb-2">
             Rishika
             <br />
             <span className="gradient-text">Vishwakarma</span>
           </h1>
           <p className="text-gray-500 text-sm md:text-base font-medium mt-3">
-            Backend & AI Systems Engineer
+            AI Full Stack Developer
           </p>
         </motion.div>
 
+        {/* Description */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
