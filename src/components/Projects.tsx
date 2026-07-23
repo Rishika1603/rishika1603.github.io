@@ -79,6 +79,7 @@ const projects = [
     result: 'Enabled sub-second semantic product matching with 85% user satisfaction on RAG responses.',
     icon: <Sparkles size={18} />,
     color: '#00ffd1',
+    screenshot: '/ai-fashion-gallery.png',
     tags: ['React', 'FastAPI', 'Pinecone', 'Gemini', 'RAG', 'Diffusion'],
     links: [
       { label: 'Code', icon: <Github size={12} />, href: 'https://github.com/Rishika1603/AI-fashion-gallery' },
@@ -246,6 +247,27 @@ export default function Projects() {
 
 {project.internal ? (
   <InternalProjectScreenshot color={project.color} />
+) : project.screenshot ? (
+  <div className="relative h-40 overflow-hidden">
+    <img
+      src={project.screenshot}
+      alt={project.title}
+      className="w-full h-full object-cover"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
+    <div className="absolute top-3 right-3">
+      <span
+        className="text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full font-mono border"
+        style={{
+          backgroundColor: project.statusColor + '12',
+          color: project.statusColor,
+          borderColor: project.statusColor + '20',
+        }}
+      >
+        {project.status}
+      </span>
+    </div>
+  </div>
 ) : (
   <div className="relative h-40 bg-gradient-to-br from-white/[0.03] to-white/[0.01] border-b border-white/[0.06] flex items-center justify-center overflow-hidden">
     <div className="absolute inset-0 grid-bg opacity-30" />
