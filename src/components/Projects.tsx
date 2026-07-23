@@ -82,7 +82,7 @@ const projects = [
     tags: ['React', 'FastAPI', 'Pinecone', 'Gemini', 'RAG', 'Diffusion'],
     links: [
       { label: 'Code', icon: <Github size={12} />, href: 'https://github.com/Rishika1603/AI-fashion-gallery' },
-      { label: 'Live', icon: <ExternalLink size={12} />, href: '#demo-coming-soon' },
+      { label: 'Live', icon: <ExternalLink size={12} />, href: 'https://ai-fashion-gallery-frontend-production.up.railway.app' },
     ],
   },
   {
