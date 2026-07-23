@@ -248,13 +248,12 @@ export default function Projects() {
 {project.internal ? (
   <InternalProjectScreenshot color={project.color} />
 ) : project.screenshot ? (
-  <div className="relative h-40 overflow-hidden border-b border-white/[0.06]">
+  <div className="relative h-40 overflow-hidden border-b border-white/[0.06] bg-[#050505]">
     <img
       src={project.screenshot}
       alt={project.title}
-      className="w-full h-full object-cover"
+      className="w-full h-full object-contain"
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
     <div className="absolute top-3 right-3">
       <span
         className="text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full font-mono border"
