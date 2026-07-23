@@ -248,7 +248,7 @@ export default function Projects() {
 {project.internal ? (
   <InternalProjectScreenshot color={project.color} />
 ) : project.screenshot ? (
-  <div className="relative h-40 overflow-hidden">
+  <div className="relative h-40 overflow-hidden border-b border-white/[0.06]">
     <img
       src={project.screenshot}
       alt={project.title}
