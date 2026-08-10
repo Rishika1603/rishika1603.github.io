@@ -112,7 +112,7 @@ export default function About() {
 
             <div className="flex flex-wrap gap-3">
               <a
-                href="/Rishika_Vishwakarma_Resume.pdf"
+                href="/Rishika_Vishwakarma_Resume.pdf?v=2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-accent text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[#00e6bc] transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,209,0.25)]"

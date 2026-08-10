@@ -58,11 +58,11 @@ export default function Contact() {
             </div>
             <div>
               <div className="text-white text-sm font-semibold">Download My Resume</div>
-              <div className="text-gray-500 text-xs">Rishika_Vishwakarma_Resume.pdf · 157 KB</div>
+              <div className="text-gray-500 text-xs">Rishika_Vishwakarma_Resume.pdf · Updated Aug 2026</div>
             </div>
           </div>
           <a
-            href="/Rishika_Vishwakarma_Resume.pdf"
+            href="/Rishika_Vishwakarma_Resume.pdf?v=2"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-accent text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[#00e6bc] transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,209,0.2)]"
