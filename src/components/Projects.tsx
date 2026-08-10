@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Sparkles, FileText, CalendarDays, ShieldAlert, ArrowUpRight, Layers, Bot, Eye, BrainCircuit, Activity } from 'lucide-react';
+import { ExternalLink, Github, Sparkles, FileText, CalendarDays, ShieldAlert, ArrowUpRight, Layers, Eye, BrainCircuit, Activity, ChefHat } from 'lucide-react';
 import { useState } from 'react';
 
 function PulseRing() {
@@ -50,20 +50,20 @@ function InternalProjectScreenshot({ color }: { color: string }) {
 
 const projects = [
   {
-    title: 'dev-agents',
-    status: 'Production-Ready',
-    statusColor: '#a78bfa',
+    title: 'AI Chef',
+    status: 'Live',
+    statusColor: '#ff8a3d',
     category: 'AI & Data',
     description:
-      'Production-grade AI agent platform using LangGraph, FastAPI, React + TypeScript, and PostgreSQL with pgvector. Features durable execution with checkpointing, human-in-the-loop approval, SSE streaming UI, Langfuse observability, and DeepEval CI pipelines.',
-    challenge: 'Enterprise teams needed autonomous AI agents with human oversight and full audit trails.',
-    solution: 'Built a LangGraph orchestration layer with PostgreSQL persistence, interrupt primitives for approval, and Langfuse tracing.',
-    result: 'Reduced manual workflow processing by 60% with 100% traceable agent decisions.',
-    icon: <Bot size={18} />,
-    color: '#a78bfa',
-    tags: ['LangGraph', 'FastAPI', 'React', 'PostgreSQL', 'pgvector', 'Langfuse'],
+      'Multi-agent meal-planning platform: five specialist agents (Orchestrator, MenuPlanner, PlanValidator, InventoryChecker, Shopper) turn dietary preferences into a validated 7-day menu, pantry gap analysis and a confirmed grocery order.',
+    challenge: 'Meal planning is tedious, diet rules are easy to break, and pantry stock is never in sync with what you cook.',
+    solution: 'FastAPI agent pipeline with a Groq-powered planner (llama-3.3-70b), a PlanValidator that audits every draft and triggers corrective re-plans, pantry restocking on delivery, and PostgreSQL persistence.',
+    result: 'Generates diet-compliant, validated meal plans in ~2 seconds and auto-restocks the pantry after every order.',
+    icon: <ChefHat size={18} />,
+    color: '#ff8a3d',
+    tags: ['FastAPI', 'Groq', 'React', 'PostgreSQL', 'Docker', 'Tailwind'],
     links: [
-      { label: 'Code', icon: <Github size={12} />, href: 'https://github.com/Rishika1603/AI-agents' },
+      { label: 'Code', icon: <Github size={12} />, href: 'https://github.com/Rishika1603/ai-chef' },
       { label: 'Live', icon: <ExternalLink size={12} />, href: '#demo-coming-soon' },
     ],
   },

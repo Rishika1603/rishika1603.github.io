@@ -9,7 +9,7 @@ import {
   CheckCircle2,
   AlertCircle,
   Scale,
-  Bot,
+  ChefHat,
   Sparkles,
   Code2,
   GitBranch,
@@ -279,45 +279,39 @@ export default function CaseStudies() {
               ],
             },
             {
-              id: 'devagents',
-              title: 'Dev Agents',
-              subtitle: 'Durable AI Agent Platform',
-              icon: <Bot size={20} />,
-              color: '#f472b6',
-              problem: 'LLM agents lost progress on disconnect, offered no approval workflow, and lacked observability for debugging.',
-              constraints: ['Survive browser disconnects', 'Human approval hooks', 'Full trace/logging', 'Local LLM support', '<100ms UI updates'],
+              id: 'aichef',
+              title: 'AI Chef',
+              subtitle: 'Multi-Agent Meal Planning Platform',
+              icon: <ChefHat size={20} />,
+              color: '#ff8a3d',
+              problem: 'Meal planning is tedious, diet rules are easy to break, and pantry stock is never in sync with what you actually cook.',
+              constraints: ['Respect dietary constraints', 'Audit every AI draft', 'Keep working without an LLM', 'Live agent pipeline UX', '<3s plan generation'],
               solution: {
-                architecture: ['LangGraph cyclic workflows', 'PostgreSQL checkpointing', 'HITL interrupts', 'SSE streaming', 'Langfuse tracing', 'Ollama local LLMs', 'DeepEval CI'],
+                architecture: ['FastAPI agent pipeline', 'Groq llama-3.3-70b planner', 'Rule-based PlanValidator', 'PostgreSQL persistence', 'Docker + Podman', 'React glassmorphism UI'],
                 decisions: [
-                  { title: 'PostgreSQL JSONB over Redis', reasoning: 'Chose durability over raw speed for agent state in financial/compliance workflows.' },
-                  { title: 'Async generator LangGraph nodes', reasoning: 'Avoided full-graph blocking on LLM calls while preserving graph semantics.' },
-                  { title: 'Tool-boundary interrupts only', reasoning: 'Pausing mid-generation broke context; pausing pre-tool kept resume clean and auditable.' },
+                  { title: 'LLM for planning, rules for validation', reasoning: 'Generation benefits from creativity, but diet compliance needs deterministic checks — so a validator audits every draft and triggers a corrective re-plan.' },
+                  { title: 'Ground the planner in a recipe DB', reasoning: 'Prompting with reference recipes keeps output realistic, lowercase and schema-valid without fragile parsing.' },
+                  { title: 'Graceful degradation chain', reasoning: '70B → 8B → recipe DB means the app never breaks when the LLM is unreachable.' },
                 ],
               },
               codeSnippet: {
-                title: 'LangGraph + Checkpointing',
-                code: `workflow = StateGraph(AgentState)
-workflow.add_node("agent", agent_node)
-workflow.add_node("tools", tool_node)
-workflow.add_node("human_review", human_review_node)
-workflow.set_entry_point("agent")
-checkpointer = PostgresSaver(conn_string=settings.DATABASE_URL)
-app = workflow.compile(checkpointer=checkpointer)
-async for event in app.astream(input={...}, config={...}):
-    await send_to_client(event)
-    if event.get("__interrupt__"):
-        await notify_user_approval_needed(event["pending_tool"])`,
-                highlight: 'Durable agent execution with HITL',
+                title: 'PlanValidator feedback loop',
+                code: `plan = planner.plan_meals(diet, days)
+result = validator.check(plan, diet)
+if not result["passed"]:
+    plan = planner.plan_meals(diet, days,
+        feedback=result["issues"])  # redraft with violations`,
+                highlight: 'Agent-to-agent corrective loop',
               },
               results: [
-                { metric: 'Task Completion', value: '99.2%', impact: 'Across disconnects' },
-                { metric: 'Approval Rate', value: '12%', impact: 'Safety net captured errors' },
-                { metric: 'Resume Time', value: '<2s', impact: 'Instant restore' },
+                { metric: 'Plan Time', value: '~2s', impact: '7 validated meals' },
+                { metric: 'Diet Compliance', value: '100%', impact: 'Rule-audited drafts' },
+                { metric: 'Restock', value: 'Auto', impact: 'Pantry updated on delivery' },
               ],
               lessons: [
-                'Durable execution is mandatory for production agents',
-                'JSONB is surprisingly capable for app state',
-                'Trace everything up front or debugging will be painful',
+                'Validators catch what prompt engineering misses',
+                'Ground generative agents in reference data',
+                'Degrade gracefully: rules beat a broken API',
               ],
             },
           ].map((study) => (
