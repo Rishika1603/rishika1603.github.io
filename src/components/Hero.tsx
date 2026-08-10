@@ -169,7 +169,7 @@ export default function Hero() {
             <ArrowRight size={15} />
           </a>
           <a
-            href="/Rishika_Vishwakarma_Resume.pdf?v=2"
+            href="/Rishika_Vishwakarma_Resume.pdf?v=3"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 border border-white/[0.1] text-gray-300 px-5 py-2.5 rounded-full text-sm font-medium hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300"
@@ -205,7 +205,7 @@ export default function Hero() {
             LinkedIn
           </a>
           <a
-            href="/Rishika_Vishwakarma_Resume.pdf?v=2"
+            href="/Rishika_Vishwakarma_Resume.pdf?v=3"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 border border-white/[0.1] text-gray-300 px-4 py-2 rounded-full text-xs font-medium hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300"
