@@ -64,7 +64,7 @@ const projects = [
     tags: ['FastAPI', 'Groq', 'React', 'PostgreSQL', 'Docker', 'Tailwind'],
     links: [
       { label: 'Code', icon: <Github size={12} />, href: 'https://github.com/Rishika1603/ai-chef' },
-      { label: 'Live', icon: <ExternalLink size={12} />, href: '#demo-coming-soon' },
+      { label: 'Live', icon: <ExternalLink size={12} />, href: 'https://ai-chef-kzl3.onrender.com' },
     ],
   },
   {
