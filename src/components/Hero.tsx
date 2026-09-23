@@ -196,7 +196,7 @@ export default function Hero() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/rishika-vishwakarma"
+            href="https://www.linkedin.com/in/rishika-vishwakarma-294108213"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 border border-white/[0.1] text-gray-300 px-4 py-2 rounded-full text-xs font-medium hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300"

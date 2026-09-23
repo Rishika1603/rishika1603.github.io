@@ -94,7 +94,7 @@ export default function Contact() {
               </a>
               <div className="mt-2 flex flex-col gap-1">
                 <a
-                  href="https://linkedin.com/in/rishika-vishwakarma"
+                  href="https://www.linkedin.com/in/rishika-vishwakarma-294108213"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-500 text-xs hover:text-accent transition-colors flex items-center gap-1.5"

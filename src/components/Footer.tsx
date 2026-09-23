@@ -40,7 +40,7 @@ export default function Footer() {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com/in/rishika-vishwakarma"
+                href="https://www.linkedin.com/in/rishika-vishwakarma-294108213"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white text-sm flex items-center gap-2 transition-colors duration-300"
